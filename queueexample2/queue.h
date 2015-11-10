@@ -4,6 +4,20 @@
 #include <vector>
 
 using namespace std;
+class Node {
+
+  public:
+    Node(int, Node*);
+
+    Node* getNext();
+    int getData;
+    void setNext(Next*);
+    void setData(int);
+
+  private:
+    int val;
+    Node* next;
+};
 
 class Queue {
   public:
