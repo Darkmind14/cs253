@@ -7,19 +7,20 @@ int main(int argc, char* argv[]) {
 
   Stack mystack;
 
-  int x;
+  double x;
 
-  cin >. x;
+  x = 5;
+  cout << x << endl;
 
-  while (!cin.eof()) {
+  mystack.push(x);
 
-    // process x
-    mystack.push(x);
+  x = 6;
+  cout << x << endl;
+  
+  mystack.push(x);
 
-    // read the next x
-    cin >> x;
+  cout << mystack.top() << endl;
 
-  }
   
   while (!mystack.isEmpty())
     cout << mystack.pop() << endl;
