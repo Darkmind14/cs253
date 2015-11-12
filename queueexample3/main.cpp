@@ -13,7 +13,7 @@ void emptyTheQueue(Queue& myqueue) {
 
 int main(int argc, char* argv[]) {
 
-  Queue myqueue;
+  Queue* myqptr = new Queue();
 
   int x;
 
@@ -22,7 +22,8 @@ int main(int argc, char* argv[]) {
   while (!cin.eof()) {
 
     // process x
-    myqueue << x;
+    //myqueue << x;
+    myqptr->enqueue(x);
 
     // read the next x
     cin >> x;
@@ -31,9 +32,13 @@ int main(int argc, char* argv[]) {
 
   // emptyTheQueue(myqueue);
 
-  while (!myqueue.isEmpty()) {
-    myqueue >> x;
+  while (!myqptr->isEmpty()) {
+    //myqueue >> x;
+    x = myqptr->dequeue();
     cout << x << endl;
   }
+
+  delete myqptr;
+
   return 0;
 }

@@ -7,6 +7,15 @@ Node::Node(int x, Node* next) {
   this->next = next;
 }
 
+Node::~Node() {
+  if (next == nullptr)
+    return;
+
+  try {
+    delete next;
+  } catch(...) {}
+}
+
 void Node::setNext(Node* next) {
   this->next = next;
 }
@@ -31,6 +40,12 @@ Queue::Queue() {
 
 }
 
+Queue::~Queue() {
+  try {
+    delete head;
+  } catch (...) {}
+}
+
 void Queue::enqueue(int item) {
 
   tail->setNext(new Node(item,nullptr));
@@ -45,6 +60,7 @@ int Queue::dequeue() {
   Node * toDelete = head->getNext();
   if (toDelete == tail)
     tail = head;
+  toDelete->setNext(nullptr);
   delete toDelete; // reclaims heap space
   head->setNext(newFront);
 

@@ -8,6 +8,7 @@ class Node {
 
   public:
     Node(int, Node*);
+    ~Node();
 
     Node* getNext();
     int getData();
@@ -22,6 +23,7 @@ class Node {
 class Queue {
   public:
     Queue();
+    ~Queue(); // not queue, deconstructor
 
     // the enqueue method enqueues an item on the queue.
     void enqueue(int item);
