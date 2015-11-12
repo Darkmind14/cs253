@@ -1,9 +1,9 @@
-rpn: stack.o rpn.o
-	c++ -o rpn rpn.o stack.o
+rpn: stack.o calc.o
+	c++ -o rpn calc.o stack.o
 stack.o: stack.cpp stack.h
 	c++ -c stack.cpp
-rpn.o: rpn.cpp stack.h
-	c++ -c rpn.cpp
+calc.o: calc.cpp stack.h
+	c++ -c calc.cpp
 clean:
 	rm *.o
 	rm rpn
