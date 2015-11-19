@@ -2,7 +2,10 @@
 
 #include "dynstack.h"
 #include <iostream>
+#include <cstddef>
 #define debug
+
+using namespace std;
 
 Node::Node(double x, Node* next) {
 
@@ -50,10 +53,8 @@ double Node::getData() {
 
 DynStack::DynStack() {
 
-  Node* dummy = new Node(-1,nullptr);
-  head = dummy;
-  tail = dummy;
-
+  head = nullptr;
+  // head = NULL;
 }
 
 DynStack::~DynStack() {
@@ -68,32 +69,31 @@ DynStack::~DynStack() {
 
 void DynStack::push(double item) {
 
-  Node* tmp;
-
-  tmp = new Node(item, nullptr);
-  tail->setNext(tmp);
-  tail = tail->getNext();
+  Node* next;
+  next = new Node(item, head);
+  head = next;
 
 }
 
 double DynStack::pop() {
-  double item = tail->getData();
-  while ( head->getNext()->getNext()->getNext() != nullptr ) {
-    head->getNext();
-  }
-  tail->setNext(head->getNext());
+  
+  Node* tmptr = head->getNext();
+  double item = head->getData();
+  head = tmptr;
+  
+  
   return item;
 
 }
 
 double DynStack::top() {
 
-  return tail->getData();
+  return head->getData();
 
 }
 
 bool DynStack::isEmpty() {
 
-  return head->getNext() == nullptr;
+  return head == nullptr;
 
 }

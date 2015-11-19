@@ -38,7 +38,6 @@ class DynStack {
 
   private:
     Node* head;
-    Node* tail;
 
 };
 
