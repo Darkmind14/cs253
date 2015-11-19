@@ -4,6 +4,16 @@
 #include <vector>
 
 using namespace std;
+
+class EmptyQueueException {
+  public:
+    EmptyStringException(string);
+    string getMessage();
+
+  private:
+    string msg;
+};
+
 class Node {
 
   public:

@@ -19,24 +19,34 @@ int main(int argc, char* argv[]) {
 
   cin >> x;
 
-  while (!cin.eof()) {
+
+  //while (!cin.eof()) {
+  int count = 0;
+  while (false) {
 
     // process x
     //myqueue << x;
-    myqptr->enqueue(x);
+    myqptr->enqueue(count++);
 
     // read the next x
     cin >> x;
 
   }
 
+  try {
+    cout << queue.dequeue() << endl;
+  }
+  catch(EmptyQueueException* ex) {
+    cerr << ex->getMessage() << endl;
+  }
+
   // emptyTheQueue(myqueue);
 
-  while (!myqptr->isEmpty()) {
+/*  while (!myqptr->isEmpty()) {
     //myqueue >> x;
     x = myqptr->dequeue();
-    cout << x << endl;
-  }
+    cout << x << endl; 
+  } */
 
   delete myqptr;
 
