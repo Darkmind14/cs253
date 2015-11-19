@@ -5,20 +5,25 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-  Stack mystack;
+  DynStack* mydynsptr = new DynStack();
 
   double x;
 
   x = 5;
   cout << x << endl;
 
-  mystack.push(x);
+  mydynsptr->push(x);
 
-  cout << mystack.top() << endl;
+  cout << mydynsptr->top() << endl;
+  x = 6;
 
-  
-  while (!mystack.isEmpty())
-    cout << mystack.pop() << endl;
+  mydynsptr->push(x);
+
+  cout << mydynsptr->top() << endl;
+  mydynsptr->pop();
+  cout << mydynsptr->top() << endl;
+
+  delete mydynsptr; 
 
   return 0;
 }

@@ -25,6 +25,7 @@ class DynStack {
 
   public:
     DynStack();
+    ~DynStack();
 
     // the push method pushes an item onto the top of the stack
     void push(double);
@@ -36,8 +37,12 @@ class DynStack {
     bool isEmpty();
 
   private:
-    vector<double> list;
+    Node* head;
+    Node* tail;
 
 };
+
+DynStack& operator<<(DynStack&, double);
+DynStack& operator>>(DynStack&, double&);
 
 #endif
