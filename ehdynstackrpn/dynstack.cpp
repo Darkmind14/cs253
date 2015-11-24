@@ -3,6 +3,7 @@
 #include "dynstack.h"
 #include <iostream>
 #include <cstddef>
+#include <string>
 #define debug
 
 using namespace std;

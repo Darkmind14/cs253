@@ -1,6 +1,6 @@
 #include <iostream>
 #include <sstream>
-#include <cstring>
+#include <string>
 #include "dynstack.h"
 
 /* This program implements an RPN calculator which accepts RPN expressions in the 
@@ -20,7 +20,7 @@
 
    6 S 5 * R + evaluates to 36
 
-   We use a stack which is simulated by a vector in this program.
+   We use a stack which is simulated by a linked list in this program.
 
 */
  
@@ -28,24 +28,41 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
+  string s;
   int x, y;
   int sv, rcv;
-  int k;
+  string k;
+  int e;
 
   DynStack stack;
 
-  for (k=1;k<argc;k++) {
+  cout << "Please enter an expression: ";
+  getline(cin, s);
 
-    if (!strcmp("+",argv[k])) {
+  while (s!="") {
 
-      x = stack.top();
-      stack.pop();
-      y = stack.top();
-      stack.pop();
-      x = x + y;
-      stack.push(x);
+    istringstream sin(s + " ");
 
-    } else if (!strcmp("-",argv[k])) {
+    sin >> k;
+
+    while(!sin.eof()) {
+
+    if (k == "+") {
+      try {
+        x = stack.top();
+        stack.pop();
+        y = stack.top();
+        stack.pop();
+        x = x + y;
+        stack.push(x);
+        e = 0;
+      } catch(int e) {
+          e = 1;
+          cout << "Malformed expression extra plus. " << e << endl;
+          throw;
+        }
+
+    } else if (k == "-") {
 
       x = stack.top();
       stack.pop();
@@ -54,16 +71,16 @@ int main(int argc, char* argv[]) {
       x = y - x;
       stack.push(x);
 
-    } else if (!strcmp("*",argv[k])) {
+    } else if (k == "*") {
 
       x = stack.top();
       stack.pop();
       y = stack.top();
       stack.pop();
-      x = x *y;
+      x = x * y;
       stack.push(x);
 
-    } else if (!strcmp("/",argv[k])) {
+    } else if (k == "/") {
 
       x = stack.top();
       stack.pop();
@@ -72,32 +89,34 @@ int main(int argc, char* argv[]) {
       x = y / x;
       stack.push(x);
 
-    } else if (!strcmp("S",argv[k])) {
+    } else if (k == "S") {
 
       x = stack.top();
       sv = x;
 
-    } else if (!strcmp("R",argv[k])) {
+    } else if (k == "R") {
 
       rcv = sv;
       x = rcv;
       stack.push(x);
 
     } else { /* must be a number */
-      istringstream sin(argv[k]);
-      sin >> x;
+      istringstream kin(k + " ");
+      kin >> x;
       stack.push(x);
 
     }
+    sin >> k;
+   }
+   x = stack.top();
+   stack.pop();
+   cout << x << endl;
+   if (!stack.isEmpty()) {
+     cout << "Expression is malformed";
+   }
+   cout << "Please enter an expression: ";
+   getline(cin, s);
   }
-  
-  x = stack.top();
-  try {
-    stack.pop();
-  }
-  catch(EmptyStackException* ex) {
-    cerr << ex->getMessage() << endl;
-  }
-  cout << x << endl; 
+  cout << "RPN Calculator is done." << endl;
   return 0;
 }
