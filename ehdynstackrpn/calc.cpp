@@ -92,10 +92,12 @@ int main(int argc, char* argv[]) {
   }
   
   x = stack.top();
-  stack.pop();
-
   try {
-    cout << 
+    stack.pop();
+  }
+  catch(EmptyStackException* ex) {
+    cerr << ex->getMessage() << endl;
+  }
   cout << x << endl; 
   return 0;
 }

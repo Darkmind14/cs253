@@ -3,9 +3,21 @@
 #include "dynstack.h"
 #include <iostream>
 #include <cstddef>
-# define debug
+#define debug
 
 using namespace std;
+
+EmptyStackException::EmptyStackException(string message) {
+  
+  msg = message;
+
+}
+
+string EmptyStackException::getMessage() {
+
+  return msg;
+
+}
 
 Node::Node(double x, Node* next) {
 

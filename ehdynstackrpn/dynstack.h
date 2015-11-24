@@ -5,6 +5,16 @@
 
 using namespace std;
 
+class EmptyStackException {
+
+  public:
+    EmptyStackException(string);
+    string getMessage();
+
+  private:
+    string msg;
+};
+
 class Node {
 
   public:
