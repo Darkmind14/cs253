@@ -1,3 +1,4 @@
+#include <iostream>
 #include "fraction.h"
 
 int gcd(int x, int y) {
@@ -17,49 +18,103 @@ Fraction::Fraction(int numerator) {
 	bottom = 1;
 }
 
-Fraction::Fraction(int numerator, int denominator) {
-	gcd(numerator, denominator);
-	top = numerator;
-	bottom = denominator;
+Fraction::Fraction(int num, int den) {
+	int result = gcd(num, den);
+	top = num / result;
+	bottom = den / result;
 }
 int Fraction::numerator() const {
-	return numerator;
+	return top;
 }
 
 int Fraction::denominator() const {
-	return denominator;
+	return bottom;
 }
 
-double Fraction::asDouble() {
-
+double Fraction::asDouble() const {
+	return bottom;
 }
 
-Fraction::add(const Fraction& sf) const {
-	A = this->numerator();
-	B = this->denominator();
-	C = sf->numerator();
-	D = sf->denominator();
+Fraction Fraction::add(const Fraction& sf) const {
+	int A = this->numerator();
+	int B = this->denominator();
+	int C = sf.numerator();
+	int D = sf.denominator();
 
-	E = A * D / B * D;
-	F = C * B / B * D;
+	int E = A * D;
+	int F = B * D;
+	int G = C * B;
 
-	Fraction(E, F);
+	int H = E + G;
+
+	Fraction I = Fraction(H, F);
+
+	return I;
 }
 
-Fraction::subtract(const Fraction& sf) const {
-	A = this->numerator();
-	B = this->denominator();
-	C = sf->numerator();
-	D = sf->denominator();
+Fraction Fraction::subtract(const Fraction& sf) const {
+	int A = this->numerator();
+	int B = this->denominator();
+	int C = sf.numerator();
+	int D = sf.denominator();
 
-	E = A * D / B * D;
-	F = C * B / B * D;
+	int E = A * D;
+	int F = B * D;
+	int G = C * B;
+
+	int H = E - G;
+
+	Fraction I = Fraction(H, F);
+
+	return I;
 }
 
-Fraction::divide(const Fraction&) const {
+Fraction Fraction::divide(const Fraction& sf) const {
+	int A = this->numerator();
+	int B = this->denominator();
+	int C = sf.numerator();
+	int D = sf.denominator();
 
+	int E = A * D;
+	int F = B * C;
+
+	Fraction G = Fraction(E, F);
+
+	return G;
 }
 
-Fraction::multiply(const Fraction&) const {
+Fraction Fraction::multiply(const Fraction& sf) const {
+	int A = this->numerator();
+	int B = this->denominator();
+	int C = sf.numerator();
+	int D = sf.denominator();
 
+	int E = A * C;
+	int F = B * D;
+
+	Fraction G = Fraction(E, F);
+
+	return G;
+}
+
+Fraction operator+(const Fraction& a, const Fraction& b) {
+	a.add(b);
+}
+
+Fraction operator-(const Fraction& a, const Fraction& b) {
+	a.subtract(b);
+}
+
+Fraction operator*(const Fraction& a, const Fraction& b) {
+	a.multiply(b);
+}
+
+Fraction operator/(const Fraction& a, const Fraction& b) {
+	a.divide(b);
+}
+
+ostream& operator<<(ostream&, const Fraction& f) {
+	if (f->denominator == 1) {
+		return f.numerator();
+	}
 }

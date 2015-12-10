@@ -16,7 +16,7 @@ public:
 	Fraction add(const Fraction&) const;
 	Fraction subtract(const Fraction&) const;
 	Fraction divide(const Fraction&) const;
-	Fraction multipy(const Fraction&) const;
+	Fraction multiply(const Fraction&) const;
 
 private:
 	int top;

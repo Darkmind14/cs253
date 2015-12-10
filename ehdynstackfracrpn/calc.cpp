@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
   string k;
   int e;
 
-  DynStack stack;
+  DynStack<double> stack;
 
   cout << "Please enter an expression: ";
   getline(cin, s);

@@ -19,4 +19,3 @@ string EmptyStackException::getMessage() {
   return msg;
 
 }
-

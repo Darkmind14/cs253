@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include "dynstack.h"
+#include "fraction.h"
 #include <string>
 #define debug
 
@@ -8,7 +9,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-  DynStack* mydynsptr = new DynStack();
+  /* DynStack* mydynsptr = new DynStack();
 
   double x;
   string s;
@@ -48,7 +49,19 @@ int main(int argc, char* argv[]) {
 
   }
 
-  delete mydynsptr; 
+  delete mydynsptr; */
+
+  cout << "Do I Exist?" << endl;
+  Fraction myfraction = Fraction(3);
+  Fraction myfraction2 = Fraction(2);
+  cout << "Defined Fraction" << endl;
+  cout << "Now Print!" << endl;
+  cout << myfraction.numerator() << "/" << myfraction.denominator() << endl;
+  myfraction.add(myfraction2);
+  myfraction.subtract(myfraction2);
+  myfraction.multiply(myfraction2);
+  myfraction.divide(myfraction2);
+  cout << myfraction.asDouble() << endl;
 
   return 0;
 }
