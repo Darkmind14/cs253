@@ -34,12 +34,26 @@ double Fraction::asDouble() {
 
 }
 
-Fraction::add(const Fraction&) const {
+Fraction::add(const Fraction& sf) const {
+	A = this->numerator();
+	B = this->denominator();
+	C = sf->numerator();
+	D = sf->denominator();
 
+	E = A * D / B * D;
+	F = C * B / B * D;
+
+	Fraction(E, F);
 }
 
-Fraction::subtract(const Fraction&) const {
+Fraction::subtract(const Fraction& sf) const {
+	A = this->numerator();
+	B = this->denominator();
+	C = sf->numerator();
+	D = sf->denominator();
 
+	E = A * D / B * D;
+	F = C * B / B * D;
 }
 
 Fraction::divide(const Fraction&) const {
