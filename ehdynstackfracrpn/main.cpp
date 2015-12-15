@@ -65,6 +65,23 @@ int main(int argc, char* argv[]) {
   myfraction / myfraction2;
   cout << myfraction.asDouble() << endl;
   cout << myfraction2.asDouble() << endl;
+  string s;
+  getline(cin, s);
+
+  while (s!="") {
+    istringstream sin(s + " ");
+    char c;
+    sin >> c;
+    while (!sin.eof()) {
+      switch (c) {
+        case '(':
+          
+
+      }
+      sin >> c;
+    }
+    getline(cin, s);
+  }
 
   return 0;
 }

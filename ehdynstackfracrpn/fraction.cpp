@@ -99,19 +99,19 @@ Fraction Fraction::multiply(const Fraction& sf) const {
 }
 
 Fraction operator+(const Fraction& a, const Fraction& b) {
-	a.add(b);
+	return a.add(b);
 }
 
 Fraction operator-(const Fraction& a, const Fraction& b) {
-	a.subtract(b);
+	return a.subtract(b);
 }
 
 Fraction operator*(const Fraction& a, const Fraction& b) {
-	a.multiply(b);
+	return a.multiply(b);
 }
 
 Fraction operator/(const Fraction& a, const Fraction& b) {
-	a.divide(b);
+	return a.divide(b);
 }
 
 ostream& operator<<(ostream& os, const Fraction& f) {

@@ -4,6 +4,7 @@
 #include "dynstack.h"
 #include "fraction.h"
 #include <cmath>
+#include <map>
 
 /* This program implements an RPN calculator which accepts RPN expressions in the 
    following format.
@@ -31,10 +32,11 @@ using namespace std;
 int main(int argc, char* argv[]) {
 
   string s;
-  Fraction x, y;
+  Fraction x, y, z, it;
   Fraction sv, rcv;
   char k;
   double real;
+  map<char,Fraction> mymap;
 
   DynStack<Fraction> stack;
 
@@ -55,8 +57,8 @@ int main(int argc, char* argv[]) {
         stack.pop();
         y = stack.top();
         stack.pop();
-        x = x + y;
-        stack.push(x);
+        z = x + y;
+        stack.push(z);
       break;
 
       case '-': 
@@ -65,8 +67,8 @@ int main(int argc, char* argv[]) {
         stack.pop();
         y = stack.top();
         stack.pop();
-        x = y - x;
-        stack.push(x);
+        z = x - y;
+        stack.push(z);
       break;
 
       case '*':
@@ -75,18 +77,18 @@ int main(int argc, char* argv[]) {
         stack.pop();
         y = stack.top();
         stack.pop();
-        x = x * y;
-        stack.push(x);
+        z = x * y;
+        stack.push(z);
       break;
 
       case '/':
 
-        x = stack.top();
+        it = stack.top();
         stack.pop();
         y = stack.top();
         stack.pop();
-        x = y / x;
-        stack.push(x);
+        z = x / y;
+        stack.push(z);
       break;
 
       case 'S':
@@ -102,6 +104,12 @@ int main(int argc, char* argv[]) {
         stack.push(x);
       break;
 
+      case '(':
+        cout << "fraction broken" << endl;
+
+      break;
+
+
       default:
         sin.putback(k);
         sin >> real;
@@ -112,20 +120,21 @@ int main(int argc, char* argv[]) {
         }
 
         int denominator = 1;
-        while (abs((int) real - real) > 0.0000000000000001) {
+        while (abs(int(real) - real) > 0.0000000000000001) {
         	real = real * 10;
         	denominator = denominator * 10;
         }
 
-        stack.push(Fraction((int) real, denominator));
+        stack.push(Fraction(int(real), denominator));
       break;
 
     }
     sin >> k;
    }
-   x = stack.top();
+   it = stack.top();
+   mymap['i']=it;
    stack.pop();
-   cout << x << endl;
+   cout << "it is: " << it << endl;
    if (!stack.isEmpty()) {
      cout << "Expression is malformed";
    }
