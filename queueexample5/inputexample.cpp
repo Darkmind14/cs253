@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
 
 		// process s
 		// Loop and a half
-		istringstream in(s + " ");
+		istringstream sin(s + " ");
 
 		// Read one character of input
 		char c;

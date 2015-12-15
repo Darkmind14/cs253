@@ -150,6 +150,7 @@ T DynStack<T>::pop() {
   Node<T>* tmptr = head->getNext();
   T item = head->getData();
   head = tmptr;
+  delete tmptr;
   
   
   return item;

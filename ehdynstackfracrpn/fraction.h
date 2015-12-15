@@ -26,7 +26,7 @@ private:
 
 Fraction operator+(const Fraction& a, const Fraction& b);
 Fraction operator-(const Fraction& a, const Fraction& b);
-Fraction* operator*(const Fraction& a, const Fraction& b);
+Fraction operator*(const Fraction& a, const Fraction& b);
 Fraction operator/(const Fraction& a, const Fraction& b);
 ostream& operator<<(ostream&, const Fraction& f);
 

@@ -13,8 +13,8 @@ Fraction::Fraction() {
 	bottom = 1;
 }
 
-Fraction::Fraction(int numerator) {
-	top = numerator;
+Fraction::Fraction(int num) {
+	top = num;
 	bottom = 1;
 }
 
@@ -32,7 +32,8 @@ int Fraction::denominator() const {
 }
 
 double Fraction::asDouble() const {
-	return bottom;
+	double doubleresult = double(this->numerator()) / double(this->denominator());
+	return doubleresult;
 }
 
 Fraction Fraction::add(const Fraction& sf) const {
@@ -113,8 +114,13 @@ Fraction operator/(const Fraction& a, const Fraction& b) {
 	a.divide(b);
 }
 
-ostream& operator<<(ostream&, const Fraction& f) {
-	if (f->denominator == 1) {
-		return f.numerator();
+ostream& operator<<(ostream& os, const Fraction& f) {
+	if (f.denominator() == 1) {
+		os << f.numerator();
+		return os;
+	}
+	else {
+		os << f.numerator() << "/" << f.denominator();
+		return os;
 	}
 }

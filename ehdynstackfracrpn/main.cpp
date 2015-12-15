@@ -54,14 +54,17 @@ int main(int argc, char* argv[]) {
   cout << "Do I Exist?" << endl;
   Fraction myfraction = Fraction(3);
   Fraction myfraction2 = Fraction(2);
+  Fraction myfraction3 = Fraction(3, 4);
   cout << "Defined Fraction" << endl;
   cout << "Now Print!" << endl;
-  cout << myfraction.numerator() << "/" << myfraction.denominator() << endl;
-  myfraction.add(myfraction2);
-  myfraction.subtract(myfraction2);
-  myfraction.multiply(myfraction2);
-  myfraction.divide(myfraction2);
+  cout << myfraction << endl;
+  cout << myfraction3 << endl;
+  myfraction + myfraction2;
+  myfraction - myfraction2;
+  myfraction * myfraction2;
+  myfraction / myfraction2;
   cout << myfraction.asDouble() << endl;
+  cout << myfraction2.asDouble() << endl;
 
   return 0;
 }
